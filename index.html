@@ -280,8 +280,8 @@
 
     function combineDate(day, month, year) {
         if (!day || !month || !year) return '';
-        // Assuming year is in Buddhist Era (พ.ศ.), no conversion is needed if you want to display it as is.
-        return `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+        // Prepend with a single quote to force Google Sheets to treat it as text
+        return `'${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
     }
     
     function previewData() {
@@ -322,7 +322,8 @@
         // 3. If all data is present, create the object and show the confirmation page
         const now = new Date();
         formData = {
-            Timestamp: now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+            // Prepend with a single quote to force Google Sheets to treat it as text
+            Timestamp: "'" + now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
             "หลักสูตร": document.getElementById("หลักสูตร").value,
             "ยศ": document.getElementById("ยศ").value,
             "ชื่อ": document.getElementById("ชื่อ").value.trim(),
@@ -405,3 +406,4 @@ ${formattedTimestamp}
   </script>
 </body>
 </html>
+
