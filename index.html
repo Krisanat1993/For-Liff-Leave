@@ -1,370 +1,389 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ระบบกรอกใบการลา</title>
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: 'Kanit', sans-serif;
-      transition: opacity 0.5s ease;
-      padding: 20px;
-    }
-    h2, h4 {
-      text-align: center;
-    }
-    .hidden {
-      display: none;
-    }
-    #countdownPopup {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1050; /* Make it appear above modal */
-      color: #fff;
-      font-size: 1.5rem;
-    }
-    #countdownPopup .content {
-      background: #333;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .modal-body ul {
-        text-align: left;
-        padding-left: 20px;
-        margin-bottom: 0;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ระบบกรอกใบการลา</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+    h2, h4 {
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    #countdownPopup {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1050; /* Make it appear above modal */
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    #countdownPopup .content {
+      background: #333;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .modal-body ul {
+        text-align: left;
+        padding-left: 20px;
+        margin-bottom: 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <img src="https://drive.google.com/thumbnail?id=1biw0LeK_X0ntKPdH4-8XaPUcl1yGDl59" width="110px" class="d-block mx-auto">
-    <h2 class="mb-4">ระบบกรอกใบการลา</h2>
+  <div class="container mt-5">
+    <img src="https://drive.google.com/thumbnail?id=1biw0LeK_X0ntKPdH4-8XaPUcl1yGDl59" width="110px" class="d-block mx-auto">
+    <h2 class="mb-4">ระบบกรอกใบการลา</h2>
 
-    <div id="form-container">
-      <form id="leave-form">
+    <div id="form-container">
+      <form id="leave-form">
+        <div class="form-group">
+          <label for="หลักสูตร">หลักสูตร:</label>
+          <select id="หลักสูตร" class="form-control">
+            <option value="-">เลือกหลักสูตร</option>
+            <option value="หลักสูตรประทวน สายวิทยาการการศึกษา">หลักสูตรประทวน สายวิทยาการการศึกษา</option>
+            <option value="หลักสูตรสัญญาบัตร สายวิทยาการการศึกษา">หลักสูตรสัญญาบัตร สายวิทยาการการศึกษา</option>
+            <option value="หลักสูตรการปฏิบัติการร่วม-A">หลักสูตรการปฏิบัติการร่วม-A</option>
+            <option value="หลักสูตรการปฏิบัติการร่วม-B">หลักสูตรการปฏิบัติการร่วม-B</option>
+            <option value="หลักสูตรการปฏิบัติการร่วม-C">หลักสูตรการปฏิบัติการร่วม-C</option>
+            <option value="หลักสูตรการปฏิบัติการร่วม-D">หลักสูตรการปฏิบัติการร่วม-D</option>
+            <option value="หลักสูตรสัญญาบัตรใหม่">หลักสูตรสัญญาบัตรใหม่</option>
+            <option value="หลักสูตรประทวนอาวุโส">หลักสูตรประทวนอาวุโส</option>
+            <option value="หลักสูตรประทวนใหม่">หลักสูตรประทวนใหม่</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ยศ">คำนำหน้าชื่อ:</label>
+          <select id="ยศ" class="form-control">
+            <option value="-">เลือกคำนำหน้าชื่อ</option>
+            <option value="นาย">นาย</option>
+            <option value="นาง">นาง</option>
+            <option value="นางสาว">นางสาว</option>
+            <option value="พลเอก">พลเอก</option>
+            <option value="พลโท">พลโท</option>
+            <option value="พลตรี">พลตรี</option>
+            <option value="พันเอก">พันเอก</option>
+            <option value="พันโท">พันโท</option>
+            <option value="พันตรี">พันตรี</option>
+            <option value="ร้อยเอก">ร้อยเอก</option>
+            <option value="ร้อยโท">ร้อยโท</option>
+            <option value="ร้อยตรี">ร้อยตรี</option>
+            <option value="จ่าสิบเอก">จ่าสิบเอก</option>
+            <option value="จ่าสิบโท">จ่าสิบโท</option>
+            <option value="จ่าสิบตรี">จ่าสิบตรี</option>
+            <option value="สิบเอก">สิบเอก</option>
+            <option value="สิบโท">สิบโท</option>
+            <option value="สิบตรี">สิบตรี</option>
+            <option value="พลเรือเอก">พลเรือเอก</option>
+            <option value="พลเรือโท">พลเรือโท</option>
+            <option value="พลเรือตรี">พลเรือตรี</option>
+            <option value="นาวาเอก">นาวาเอก</option>
+            <option value="นาวาโท">นาวาโท</option>
+            <option value="นาวาตรี">นาวาตรี</option>
+            <option value="เรือเอก">เรือเอก</option>
+            <option value="เรือโท">เรือโท</option>
+            <option value="เรือตรี">เรือตรี</option>
+            <option value="พันจ่าเอก">พันจ่าเอก</option>
+            <option value="พันจ่าโท">พันจ่าโท</option>
+            <option value="พันจ่าตรี">พันจ่าตรี</option>
+            <option value="จ่าเอก">จ่าเอก</option>
+            <option value="จ่าโท">จ่าโท</option>
+            <option value="จ่าตรี">จ่าตรี</option>
+            <option value="พลอากาศเอก">พลอากาศเอก</option>
+            <option value="พลอากาศโท">พลอากาศโท</option>
+            <option value="พลอากาศตรี">พลอากาศตรี</option>
+            <option value="นาวาอากาศเอก">นาวาอากาศเอก</option>
+            <option value="นาวาอากาศโท">นาวาอากาศโท</option>
+            <option value="นาวาอากาศตรี">นาวาอากาศตรี</option>
+            <option value="เรืออากาศเอก">เรืออากาศเอก</option>
+            <option value="เรืออากาศโท">เรืออากาศโท</option>
+            <option value="เรืออากาศตรี">เรืออากาศตรี</option>
+            <option value="พันจ่าอากาศเอก">พันจ่าอากาศเอก</option>
+            <option value="พันจ่าอากาศโท">พันจ่าอากาศโท</option>
+            <option value="พันจ่าอากาศตรี">พันจ่าอากาศตรี</option>
+            <option value="จ่าอากาศเอก">จ่าอากาศเอก</option>
+            <option value="จ่าอากาศโท">จ่าอากาศโท</option>
+            <option value="จ่าอากาศตรี">จ่าอากาศตรี</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ชื่อ">ชื่อ:</label>
+          <input id="ชื่อ" class="form-control" placeholder="กรอกชื่อ" type="text">
+        </div>
+        <div class="form-group">
+          <label for="สกุล">สกุล:</label>
+          <input id="สกุล" class="form-control" placeholder="กรอกสกุล" type="text">
+        </div>
+        <div class="form-group">
+          <label for="รหัสประจำตัว">กรอกเลขที่ (เช่น 010, 108):</label>
+          <input id="รหัสประจำตัว" class="form-control" placeholder="กรอกเลขที่" type="text">
+        </div>
+        <div class="form-group">
+          <label for="การขออนุญาต">การขออนุญาตลา:</label>
+          <select id="การขออนุญาต" class="form-control">
+            <option value="-">เลือกประเภทการลา</option>
+            <option value="ลาป่วย">ลาป่วย</option>
+            <option value="ลากิจ">ลากิจ</option>
+            <option value="ลาชั่วโมง">ลาชั่วโมง</option>
+          </select>
+        </div>
+        
         <div class="form-group">
-          <label for="หลักสูตร">หลักสูตร:</label>
-          <select id="หลักสูตร" class="form-control">
-            <option value="-">เลือกหลักสูตร</option>
-            <option value="หลักสูตรประทวน สายวิทยาการการศึกษา">หลักสูตรประทวน สายวิทยาการการศึกษา</option>
-            <option value="หลักสูตรสัญญาบัตร สายวิทยาการการศึกษา">หลักสูตรสัญญาบัตร สายวิทยาการการศึกษา</option>
-            <option value="หลักสูตรการปฏิบัติการร่วม-A">หลักสูตรการปฏิบัติการร่วม-A</option>
-            <option value="หลักสูตรการปฏิบัติการร่วม-B">หลักสูตรการปฏิบัติการร่วม-B</option>
-            <option value="หลักสูตรการปฏิบัติการร่วม-C">หลักสูตรการปฏิบัติการร่วม-C</option>
-            <option value="หลักสูตรการปฏิบัติการร่วม-D">หลักสูตรการปฏิบัติการร่วม-D</option>
-            <option value="หลักสูตรสัญญาบัตรใหม่">หลักสูตรสัญญาบัตรใหม่</option>
-            <option value="หลักสูตรประทวนอาวุโส">หลักสูตรประทวนอาวุโส</option>
-            <option value="หลักสูตรประทวนใหม่">หลักสูตรประทวนใหม่</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="ยศ">คำนำหน้าชื่อ:</label>
-          <select id="ยศ" class="form-control">
-            <option value="-">เลือกคำนำหน้าชื่อ</option>
-            <option value="นาย">นาย</option>
-            <option value="นาง">นาง</option>
-            <option value="นางสาว">นางสาว</option>
-            <option value="พลเอก">พลเอก</option>
-            <option value="พลโท">พลโท</option>
-            <option value="พลตรี">พลตรี</option>
-            <option value="พันเอก">พันเอก</option>
-            <option value="พันโท">พันโท</option>
-            <option value="พันตรี">พันตรี</option>
-            <option value="ร้อยเอก">ร้อยเอก</option>
-            <option value="ร้อยโท">ร้อยโท</option>
-            <option value="ร้อยตรี">ร้อยตรี</option>
-            <option value="จ่าสิบเอก">จ่าสิบเอก</option>
-            <option value="จ่าสิบโท">จ่าสิบโท</option>
-            <option value="จ่าสิบตรี">จ่าสิบตรี</option>
-            <option value="สิบเอก">สิบเอก</option>
-            <option value="สิบโท">สิบโท</option>
-            <option value="สิบตรี">สิบตรี</option>
-            <option value="พลเรือเอก">พลเรือเอก</option>
-            <option value="พลเรือโท">พลเรือโท</option>
-            <option value="พลเรือตรี">พลเรือตรี</option>
-            <option value="นาวาเอก">นาวาเอก</option>
-            <option value="นาวาโท">นาวาโท</option>
-            <option value="นาวาตรี">นาวาตรี</option>
-            <option value="เรือเอก">เรือเอก</option>
-            <option value="เรือโท">เรือโท</option>
-            <option value="เรือตรี">เรือตรี</option>
-            <option value="พันจ่าเอก">พันจ่าเอก</option>
-            <option value="พันจ่าโท">พันจ่าโท</option>
-            <option value="พันจ่าตรี">พันจ่าตรี</option>
-            <option value="จ่าเอก">จ่าเอก</option>
-            <option value="จ่าโท">จ่าโท</option>
-            <option value="จ่าตรี">จ่าตรี</option>
-            <option value="พลอากาศเอก">พลอากาศเอก</option>
-            <option value="พลอากาศโท">พลอากาศโท</option>
-            <option value="พลอากาศตรี">พลอากาศตรี</option>
-            <option value="นาวาอากาศเอก">นาวาอากาศเอก</option>
-            <option value="นาวาอากาศโท">นาวาอากาศโท</option>
-            <option value="นาวาอากาศตรี">นาวาอากาศตรี</option>
-            <option value="เรืออากาศเอก">เรืออากาศเอก</option>
-            <option value="เรืออากาศโท">เรืออากาศโท</option>
-            <option value="เรืออากาศตรี">เรืออากาศตรี</option>
-            <option value="พันจ่าอากาศเอก">พันจ่าอากาศเอก</option>
-            <option value="พันจ่าอากาศโท">พันจ่าอากาศโท</option>
-            <option value="พันจ่าอากาศตรี">พันจ่าอากาศตรี</option>
-            <option value="จ่าอากาศเอก">จ่าอากาศเอก</option>
-            <option value="จ่าอากาศโท">จ่าอากาศโท</option>
-            <option value="จ่าอากาศตรี">จ่าอากาศตรี</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="ชื่อ">ชื่อ:</label>
-          <input id="ชื่อ" class="form-control" placeholder="กรอกชื่อ" type="text">
-        </div>
-        <div class="form-group">
-          <label for="สกุล">สกุล:</label>
-          <input id="สกุล" class="form-control" placeholder="กรอกสกุล" type="text">
-        </div>
-        <div class="form-group">
-          <label for="รหัสประจำตัว">กรอกเลขที่ (เช่น 010, 108):</label>
-          <input id="รหัสประจำตัว" class="form-control" placeholder="กรอกเลขที่" type="text">
-        </div>
-        <div class="form-group">
-          <label for="การขออนุญาต">การขออนุญาตลา:</label>
-          <select id="การขออนุญาต" class="form-control">
-            <option value="-">เลือกประเภทการลา</option>
-            <option value="ลาป่วย">ลาป่วย</option>
-            <option value="ลากิจ">ลากิจ</option>
-            <option value="ลาชั่วโมง">ลาชั่วโมง</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="ตั้งแต่วันที่">ตั้งแต่วันที่:</label>
-          <div class="d-flex">
-            <input id="ตั้งแต่วันที่-day" class="form-control mr-2" type="number" placeholder="วัน" min="1" max="31">
-            <select id="ตั้งแต่วันที่-month" class="form-control mr-2">
-              <option value="">เลือกเดือน</option>
-              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+          <label for="ตั้งแต่วันที่">ตั้งแต่วันที่:</label>
+          <div class="d-flex">
+                        <select id="ตั้งแต่วันที่-day" class="form-control mr-2">
+              <option value="">วัน</option>
+              <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
+              <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+              <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
             </select>
-            <input id="ตั้งแต่วันที่-year" class="form-control" type="number" placeholder="พ.ศ." min="2566" max="2600">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="เวลา(เริ่มต้น)">เวลา(เริ่มต้น):</label>
-          <input id="เวลา(เริ่มต้น)" class="form-control" type="time" step="900">
-        </div>
-        <div class="form-group">
-          <label for="ถึงวันที่">ถึงวันที่:</label>
-          <div class="d-flex">
-            <input id="ถึงวันที่-day" class="form-control mr-2" type="number" placeholder="วัน" min="1" max="31">
-            <select id="ถึงวันที่-month" class="form-control mr-2">
-              <option value="">เลือกเดือน</option>
-              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+                        <select id="ตั้งแต่วันที่-month" class="form-control mr-2">
+              <option value="">เลือกเดือน</option>
+              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+            </select>
+                        <select id="ตั้งแต่วันที่-year" class="form-control">
+              <option value="">พ.ศ.</option>
+              <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
             </select>
-            <input id="ถึงวันที่-year" class="form-control" type="number" placeholder="พ.ศ." min="2566" max="2600">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="เวลา(สิ้นสุด)">เวลา(สิ้นสุด):</label>
-          <input id="เวลา(สิ้นสุด)" class="form-control" type="time" step="900">
-        </div>
-        <div class="form-group">
-          <label for="เหตุผลชี้แจง">เหตุผลชี้แจง:</label>
-          <input id="เหตุผลชี้แจง" class="form-control" placeholder="กรอกเหตุผลชี้แจง" type="text">
-        </div>
-        <button type="button" id="submit-button" class="btn btn-primary btn-block" onclick="previewData()">ส่งคำขอ</button>
-      </form>
-    </div>
+          </div>
+        </div>
+                <div class="form-group">
+          <label for="เวลา(เริ่มต้น)">เวลา(เริ่มต้น):</label>
+          <input id="เวลา(เริ่มต้น)" class="form-control" type="time" step="900">
+        </div>
 
-    <div id="confirmation-container" class="hidden mt-4">
-      <h4>สรุปข้อมูลที่กรอก</h4>
-      <div id="data-summary"></div>
-      <div class="d-flex justify-content-around mt-3">
-        <button type="button" class="btn btn-success" onclick="submitData()">ยืนยันการส่ง</button>
-        <button type="button" class="btn btn-secondary" onclick="editData()">แก้ไขข้อมูล</button>
-      </div>
-    </div>
+                <div class="form-group">
+          <label for="ถึงวันที่">ถึงวันที่:</label>
+          <div class="d-flex">
+                        <select id="ถึงวันที่-day" class="form-control mr-2">
+              <option value="">วัน</option>
+              <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
+              <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+              <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+            </select>
+                        <select id="ถึงวันที่-month" class="form-control mr-2">
+              <option value="">เลือกเดือน</option>
+              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+            </select>
+                        <select id="ถึงวันที่-year" class="form-control">
+              <option value="">พ.ศ.</option>
+              <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
+            </select>
+          </div>
+        </div>
+                <div class="form-group">
+          <label for="เวลา(สิ้นสุด)">เวลา(สิ้นสุด):</label>
+          <input id="เวลา(สิ้นสุด)" class="form-control" type="time" step="900">
+        </div>
+        <div class="form-group">
+          <label for="เหตุผลชี้แจง">เหตุผลชี้แจง:</label>
+          <input id="เหตุผลชี้แจง" class="form-control" placeholder="กรอกเหตุผลชี้แจง" type="text">
+        </div>
+        <button type="button" id="submit-button" class="btn btn-primary btn-block" onclick="previewData()">ส่งคำขอ</button>
+      </form>
+    </div>
 
-    <div id="success-section" class="hidden mt-4">
-      <h4>ส่งใบลาเรียบร้อย</h4>
-      <p id="successMessage" class="text-center"></p>
-    </div>
+    <div id="confirmation-container" class="hidden mt-4">
+      <h4>สรุปข้อมูลที่กรอก</h4>
+      <div id="data-summary"></div>
+      <div class="d-flex justify-content-around mt-3">
+        <button type="button" class="btn btn-success" onclick="submitData()">ยืนยันการส่ง</button>
+        <button type="button" class="btn btn-secondary" onclick="editData()">แก้ไขข้อมูล</button>
+      </div>
+    </div>
 
-    <p id="status" class="mt-3 text-center"></p>
-    <div id="error-message" class="alert alert-danger text-center hidden">
-      การส่งใบลาผิดพลาด โปรดลองใหม่อีกครั้ง
-    </div>
-  </div>
+    <div id="success-section" class="hidden mt-4">
+      <h4>ส่งใบลาเรียบร้อย</h4>
+      <p id="successMessage" class="text-center"></p>
+    </div>
 
-  <div id="countdownPopup">
-    <div class="content">
-      กรุณารอ <span id="countdownTimer">10</span> วินาทีก่อนทำรายการใหม่
-    </div>
-  </div>
+    <p id="status" class="mt-3 text-center"></p>
+    <div id="error-message" class="alert alert-danger text-center hidden">
+      การส่งใบลาผิดพลาด โปรดลองใหม่อีกครั้ง
+    </div>
+  </div>
 
-  <div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="validationModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="validationModalLabel">ข้อมูลไม่ครบถ้วน</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>กรุณากรอกข้อมูลในช่องต่อไปนี้ให้ครบถ้วน:</p>
-          <ul id="missing-fields-list"></ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">ตกลง</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="countdownPopup">
+    <div class="content">
+      กรุณารอ <span id="countdownTimer">10</span> วินาทีก่อนทำรายการใหม่
+    </div>
+  </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="validationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="validationModalLabel">ข้อมูลไม่ครบถ้วน</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>กรุณากรอกข้อมูลในช่องต่อไปนี้ให้ครบถ้วน:</p>
+          <ul id="missing-fields-list"></ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">ตกลง</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-  <script>
-    const liffId = "2006144658-GoQy7xYj";
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyoI3ruQfTTS3RFvqHMPcTTbSp3ExSuWrXrz5YNQLhT-mNlZjDJ2gMOgynDj91ZsnYaQQ/exec";
-    let formData = {};
+  <script>
+    const liffId = "2006144658-GoQy7xYj";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyoI3ruQfTTS3RFvqHMPcTTbSp3ExSuWrXrz5YNQLhT-mNlZjDJ2gMOgynDj91ZsnYaQQ/exec";
+    let formData = {};
 
-    liff.init({ liffId: liffId })
-      .then(() => console.log("LIFF initialized"))
-      .catch(err => console.error("LIFF initialization failed:", err));
+    liff.init({ liffId: liffId })
+      .then(() => console.log("LIFF initialized"))
+      .catch(err => console.error("LIFF initialization failed:", err));
 
-    function combineDate(day, month, year) {
-        if (!day || !month || !year) return '';
-        return `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}-${year}`;
-    }
+    function combineDate(day, month, year) {
+        if (!day || !month || !year) return '';
+        return `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}-${year}`;
+    }
 
-    // --- ฟังก์ชันที่แก้ไขใหม่ทั้งหมด ---
-    function previewData() {
-        const missingFields = [];
+    // --- ฟังก์ชันที่แก้ไขใหม่ทั้งหมด ---
+    function previewData() {
+        const missingFields = [];
 
-        // 1. ตรวจสอบค่าจากฟอร์มโดยตรง
-        if (document.getElementById("หลักสูตร").value === "-") missingFields.push("หลักสูตร");
-        if (document.getElementById("ยศ").value === "-") missingFields.push("คำนำหน้าชื่อ");
-        if (document.getElementById("ชื่อ").value.trim() === "") missingFields.push("ชื่อ");
-        if (document.getElementById("สกุล").value.trim() === "") missingFields.push("สกุล");
-        if (document.getElementById("รหัสประจำตัว").value.trim() === "") missingFields.push("เลขที่");
-        if (document.getElementById("การขออนุญาต").value === "-") missingFields.push("ประเภทการลา");
-        
-        // ตรวจสอบวันที่และเวลาอย่างละเอียด
-        if (!document.getElementById("ตั้งแต่วันที่-day").value || !document.getElementById("ตั้งแต่วันที่-month").value || !document.getElementById("ตั้งแต่วันที่-year").value) {
-            missingFields.push("'ตั้งแต่วันที่'");
-        }
-        if (document.getElementById("เวลา(เริ่มต้น)").value === "") missingFields.push("'เวลา(เริ่มต้น)'");
-        if (!document.getElementById("ถึงวันที่-day").value || !document.getElementById("ถึงวันที่-month").value || !document.getElementById("ถึงวันที่-year").value) {
-            missingFields.push("'ถึงวันที่'");
-        }
-        if (document.getElementById("เวลา(สิ้นสุด)").value === "") missingFields.push("'เวลา(สิ้นสุด)'");
-        if (document.getElementById("เหตุผลชี้แจง").value.trim() === "") missingFields.push("เหตุผลชี้แจง");
+        // 1. ตรวจสอบค่าจากฟอร์มโดยตรง
+        if (document.getElementById("หลักสูตร").value === "-") missingFields.push("หลักสูตร");
+        if (document.getElementById("ยศ").value === "-") missingFields.push("คำนำหน้าชื่อ");
+        if (document.getElementById("ชื่อ").value.trim() === "") missingFields.push("ชื่อ");
+        if (document.getElementById("สกุล").value.trim() === "") missingFields.push("สกุล");
+        if (document.getElementById("รหัสประจำตัว").value.trim() === "") missingFields.push("เลขที่");
+        if (document.getElementById("การขออนุญาต").value === "-") missingFields.push("ประเภทการลา");
+        
+        // ตรวจสอบวันที่และเวลาอย่างละเอียด
+        // (JavaScript ส่วนนี้ไม่ต้องแก้ไข เพราะ .value ใช้ได้กับ <select> เหมือนกัน)
+        if (!document.getElementById("ตั้งแต่วันที่-day").value || !document.getElementById("ตั้งแต่วันที่-month").value || !document.getElementById("ตั้งแต่วันที่-year").value) {
+            missingFields.push("'ตั้งแต่วันที่'");
+        }
+        if (document.getElementById("เวลา(เริ่มต้น)").value === "") missingFields.push("'เวลา(เริ่มต้น)'");
+        if (!document.getElementById("ถึงวันที่-day").value || !document.getElementById("ถึงวันที่-month").value || !document.getElementById("ถึงวันที่-year").value) {
+            missingFields.push("'ถึงวันที่'");
+        }
+        if (document.getElementById("เวลา(สิ้นสุด)").value === "") missingFields.push("'เวลา(สิ้นสุด)'");
+        if (document.getElementById("เหตุผลชี้แจง").value.trim() === "") missingFields.push("เหตุผลชี้แจง");
 
-        // 2. ถ้ามีข้อมูลไม่ครบ ให้แสดง Modal และหยุดการทำงานทันที
-        if (missingFields.length > 0) {
-            const listElement = document.getElementById("missing-fields-list");
-            listElement.innerHTML = '';
-            missingFields.forEach(field => {
-                const li = document.createElement('li');
-                li.textContent = field;
-                listElement.appendChild(li);
-            });
-            $('#validationModal').modal('show');
-            return; // << สำคัญมาก: หยุดฟังก์ชันไว้ตรงนี้
-        }
+        // 2. ถ้ามีข้อมูลไม่ครบ ให้แสดง Modal และหยุดการทำงานทันที
+        if (missingFields.length > 0) {
+            const listElement = document.getElementById("missing-fields-list");
+            listElement.innerHTML = '';
+            missingFields.forEach(field => {
+                const li = document.createElement('li');
+                li.textContent = field;
+                listElement.appendChild(li);
+            });
+            $('#validationModal').modal('show');
+            return; // << สำคัญมาก: หยุดฟังก์ชันไว้ตรงนี้
+        }
 
-        // 3. ถ้าข้อมูลครบถ้วนทั้งหมด จึงจะสร้าง object และแสดงหน้ายืนยัน
-        const now = new Date();
-        formData = {
-            Timestamp: now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
-            "หลักสูตร": document.getElementById("หลักสูตร").value,
-            "ยศ": document.getElementById("ยศ").value,
-            "ชื่อ": document.getElementById("ชื่อ").value.trim(),
-            "สกุล": document.getElementById("สกุล").value.trim(),
-            "รหัสประจำตัว": document.getElementById("รหัสประจำตัว").value.trim(),
-            "การขออนุญาต": document.getElementById("การขออนุญาต").value,
-            "ตั้งแต่วันที่": combineDate(document.getElementById('ตั้งแต่วันที่-day').value, document.getElementById('ตั้งแต่วันที่-month').value, document.getElementById('ตั้งแต่วันที่-year').value),
-            "เวลา(เริ่มต้น)": document.getElementById("เวลา(เริ่มต้น)").value,
-            "ถึงวันที่": combineDate(document.getElementById('ถึงวันที่-day').value, document.getElementById('ถึงวันที่-month').value, document.getElementById('ถึงวันที่-year').value),
-            "เวลา(สิ้นสุด)": document.getElementById("เวลา(สิ้นสุด)").value,
-            "เหตุผลชี้แจง": document.getElementById("เหตุผลชี้แจง").value.trim(),
-        };
+        // 3. ถ้าข้อมูลครบถ้วนทั้งหมด จึงจะสร้าง object และแสดงหน้ายืนยัน
+        const now = new Date();
+        formData = {
+            Timestamp: now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+            "หลักสูตร": document.getElementById("หลักสูตร").value,
+            "ยศ": document.getElementById("ยศ").value,
+            "ชื่อ": document.getElementById("ชื่อ").value.trim(),
+            "สกุล": document.getElementById("สกุล").value.trim(),
+            "รหัสประจำตัว": document.getElementById("รหัสประจำตัว").value.trim(),
+            "การขออนุญาต": document.getElementById("การขออนุญาต").value,
+            "ตั้งแต่วันที่": combineDate(document.getElementById('ตั้งแต่วันที่-day').value, document.getElementById('ตั้งแต่วันที่-month').value, document.getElementById('ตั้งแต่วันที่-year').value),
+            "เวลา(เริ่มต้น)": document.getElementById("เวลา(เริ่มต้น)").value,
+            "ถึงวันที่": combineDate(document.getElementById('ถึงวันที่-day').value, document.getElementById('ถึงวันที่-month').value, document.getElementById('ถึงวันที่-year').value),
+            "เวลา(สิ้นสุด)": document.getElementById("เวลา(สิ้นสุด)").value,
+            "เหตุผลชี้แจง": document.getElementById("เหตุผลชี้แจง").value.trim(),
+        };
 
-        let summaryHTML = '<ul class="list-group">';
-        for (let key in formData) {
-            summaryHTML += `<li class="list-group-item"><strong>${key}:</strong> ${formData[key]}</li>`;
-        }
-        summaryHTML += '</ul>';
+        let summaryHTML = '<ul class="list-group">';
+        for (let key in formData) {
+            summaryHTML += `<li class="list-group-item"><strong>${key}:</strong> ${formData[key]}</li>`;
+        }
+        summaryHTML += '</ul>';
 
-        document.getElementById("data-summary").innerHTML = summaryHTML;
-        document.getElementById("form-container").classList.add("hidden");
-        document.getElementById("confirmation-container").classList.remove("hidden");
-        document.getElementById("status").innerText = "";
-        document.getElementById("error-message").classList.add("hidden");
-    }
+        document.getElementById("data-summary").innerHTML = summaryHTML;
+        document.getElementById("form-container").classList.add("hidden");
+        document.getElementById("confirmation-container").classList.remove("hidden");
+        document.getElementById("status").innerText = "";
+        document.getElementById("error-message").classList.add("hidden");
+    }
 
-    function editData() {
-        document.getElementById("confirmation-container").classList.add("hidden");
-        document.getElementById("form-container").classList.remove("hidden");
-    }
+    function editData() {
+        document.getElementById("confirmation-container").classList.add("hidden");
+        document.getElementById("form-container").classList.remove("hidden");
+    }
 
-    async function submitData() {
-      document.getElementById("confirmation-container").classList.add("hidden");
-      document.getElementById("status").innerText = "กำลังส่งข้อมูล...";
+    async function submitData() {
+      document.getElementById("confirmation-container").classList.add("hidden");
+      document.getElementById("status").innerText = "กำลังส่งข้อมูล...";
 
-      try {
-        const response = await fetch(`${scriptURL}?text=${encodeURIComponent(JSON.stringify(formData))}`);
-        const result = await response.json();
+      try {
+        const response = await fetch(`${scriptURL}?text=${encodeURIComponent(JSON.stringify(formData))}`);
+        const result = await response.json();
 
-        if (result.status === 'success') {
-          const now = new Date();
-          const thaiDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
-          const thaiTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-          const formattedTimestamp = `วันที่ ${thaiDate} เวลา ${thaiTime} น.`;
+        if (result.status === 'success') {
+          const now = new Date();
+          const thaiDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+          const thaiTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+          const formattedTimestamp = `วันที่ ${thaiDate} เวลา ${thaiTime} น.`;
 
-          document.getElementById("successMessage").innerText = `ใบ ${formData['การขออนุญาต']} ของ ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']} เลขที่ ${formData['รหัสประจำตัว']} ถูกส่งเรียบร้อย ณ ${formattedTimestamp}`;
-          document.getElementById("success-section").classList.remove("hidden");
-          document.getElementById("status").innerText = "";
-          
-          localStorage.setItem('lastSubmissionTime', Date.now());
+          document.getElementById("successMessage").innerText = `ใบ ${formData['การขออนุญาต']} ของ ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']} เลขที่ ${formData['รหัสประจำตัว']} ถูกส่งเรียบร้อย ณ ${formattedTimestamp}`;
+          document.getElementById("success-section").classList.remove("hidden");
+          document.getElementById("status").innerText = "";
+          
+          localStorage.setItem('lastSubmissionTime', Date.now());
 
-          if (liff.isInClient() && liff.sendMessages) {
-            const replyText = `***ใบ ${formData['การขออนุญาต']}***
+          if (liff.isInClient() && liff.sendMessages) {
+            const replyText = `***ใบ ${formData['การขออนุญาต']}***
 🔻 ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']}
-ถูกส่งเรียบร้อย ณ 
+ถูกส่งเรียบร้อย ณ 
 ${formattedTimestamp}
 
 🔻รายละเอียด ดังนี้
-        
-  ${formData['การขออนุญาต']}
-      🔸ตั้งแต่วันที่ : ${formData['ตั้งแต่วันที่']}
-            เวลา : ${formData['เวลา(เริ่มต้น)']}
-      🔸ถึงวันที่ : ${formData['ถึงวันที่']}
-            เวลา : ${formData['เวลา(สิ้นสุด)']}
-      🔸เนื่องจาก : ${formData['เหตุผลชี้แจง']}
-          `;
-            await liff.sendMessages([{ type: 'text', text: replyText }]);
-          }
+        
+  ${formData['การขออนุญาต']}
+      🔸ตั้งแต่วันที่ : ${formData['ตั้งแต่วันที่']}
+            เวลา : ${formData['เวลา(เริ่มต้น)']}
+      🔸ถึงวันที่ : ${formData['ถึงวันที่']}
+            เวลา : ${formData['เวลา(สิ้นสุด)']}
+      🔸เนื่องจาก : ${formData['เหตุผลชี้แจง']}
+          `;
+            await liff.sendMessages([{ type: 'text', text: replyText }]);
+          }
 
-        } else {
-          document.getElementById("status").innerText = "เกิดข้อผิดพลาดในการส่งข้อมูล";
-          document.getElementById("error-message").classList.remove("hidden");
-        }
-      } catch (error) {
-        console.error("การส่งข้อมูลล้มเหลว:", error);
-        document.getElementById("status").innerText = "การส่งข้อมูลล้มเหลว โปรดลองใหม่อีกครั้ง";
-        document.getElementById("error-message").classList.remove("hidden");
-      }
-    }
-  </script>
+        } else {
+          document.getElementById("status").innerText = "เกิดข้อผิดพลาดในการส่งข้อมูล";
+          document.getElementById("error-message").classList.remove("hidden");
+        }
+      } catch (error) {
+        console.error("การส่งข้อมูลล้มเหลว:", error);
+        document.getElementById("status").innerText = "การส่งข้อมูลล้มเหลว โปรดลองใหม่อีกครั้ง";
+        document.getElementById("error-message").classList.remove("hidden");
+      }
+    }
+  </script>
 </body>
 </html>
