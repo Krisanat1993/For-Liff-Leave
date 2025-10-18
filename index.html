@@ -44,11 +44,15 @@
         padding-left: 20px;
         margin-bottom: 0;
     }
+    /* Added style to ensure labels have some bottom margin */
+    .form-group label {
+        margin-bottom: .5rem;
+    }
   </style>
 </head>
 <body>
   <div class="container mt-5">
-    <img src="https://drive.google.com/thumbnail?id=1biw0LeK_X0ntKPdH4-8XaPUcl1yGDl59" width="110px" class="d-block mx-auto">
+    <img src="https://lh3.googleusercontent.com/d/1biw0LeK_X0ntKPdH4-8XaPUcl1yGDl59" width="110px" class="d-block mx-auto" alt="Logo">
     <h2 class="mb-4">ระบบกรอกใบการลา</h2>
 
     <div id="form-container">
@@ -143,52 +147,69 @@
             <option value="ลาชั่วโมง">ลาชั่วโมง</option>
           </select>
         </div>
+
+        <!-- ========== SECTION ที่แก้ไขแล้ว (วันที่เริ่มต้นและเวลาเริ่มต้น) ========== -->
         <div class="form-group">
-          <label for="ตั้งแต่วันที่">ตั้งแต่วันที่:</label>
-          <div class="d-flex">
-<select id="ตั้งแต่วันที่-day" class="form-control mr-2">
-              <option value="">วัน</option>
-              <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
-              <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-              <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-            </select>
-                        <select id="ตั้งแต่วันที่-month" class="form-control mr-2">
-              <option value="">เลือกเดือน</option>
-              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
-            </select>
-                        <select id="ตั้งแต่วันที่-year" class="form-control">
-              <option value="">พ.ศ.</option>
-              <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
-            </select> 
-          </div>
+            <div class="row">
+                <!-- Column for Start Date -->
+                <div class="col-12 col-md-7 mb-2 mb-md-0">
+                    <label for="ตั้งแต่วันที่-day">ตั้งแต่วันที่:</label>
+                    <div class="input-group">
+                        <select id="ตั้งแต่วันที่-day" class="form-control">
+                            <option value="">วัน</option>
+                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
+                            <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                        </select>
+                        <select id="ตั้งแต่วันที่-month" class="form-control">
+                            <option value="">เดือน</option>
+                            <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+                        </select>
+                        <select id="ตั้งแต่วันที่-year" class="form-control">
+                            <option value="">พ.ศ.</option>
+                            <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Column for Start Time -->
+                <div class="col-12 col-md-5">
+                    <label for="เวลา(เริ่มต้น)">เวลา(เริ่มต้น):</label>
+                    <input id="เวลา(เริ่มต้น)" class="form-control" type="time" step="900">
+                </div>
+            </div>
         </div>
+
+        <!-- ========== SECTION ที่แก้ไขแล้ว (วันที่สิ้นสุดและเวลาสิ้นสุด) ========== -->
         <div class="form-group">
-          <label for="เวลา(เริ่มต้น)">เวลา(เริ่มต้น):</label>
-          <input id="เวลา(เริ่มต้น)" class="form-control" type="time" step="900">
+            <div class="row">
+                <!-- Column for End Date -->
+                <div class="col-12 col-md-7 mb-2 mb-md-0">
+                    <label for="ถึงวันที่-day">ถึงวันที่:</label>
+                    <div class="input-group">
+                        <select id="ถึงวันที่-day" class="form-control">
+                            <option value="">วัน</option>
+                            <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
+                            <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                        </select>
+                        <select id="ถึงวันที่-month" class="form-control">
+                            <option value="">เดือน</option>
+                            <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
+                        </select>
+                        <select id="ถึงวันที่-year" class="form-control">
+                            <option value="">พ.ศ.</option>
+                           <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
+                        </select>
+                    </div>
+                </div>
+                 <!-- Column for End Time -->
+                <div class="col-12 col-md-5">
+                    <label for="เวลา(สิ้นสุด)">เวลา(สิ้นสุด):</label>
+                    <input id="เวลา(สิ้นสุด)" class="form-control" type="time" step="900">
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="ถึงวันที่">ถึงวันที่:</label>
-          <div class="d-flex">
-           <select id="ถึงวันที่-day" class="form-control mr-2">
-              <option value="">วัน</option>
-              <option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option>
-              <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
-              <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-            </select>
-                        <select id="ถึงวันที่-month" class="form-control mr-2">
-              <option value="">เลือกเดือน</option>
-              <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option><option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option><option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
-            </select>
-                        <select id="ถึงวันที่-year" class="form-control">
-              <option value="">พ.ศ.</option>
-              <option value="2568">2568</option><option value="2569">2569</option><option value="2570">2570</option><option value="2571">2571</option><option value="2572">2572</option><option value="2573">2573</option><option value="2574">2574</option><option value="2575">2575</option><option value="2576">2576</option><option value="2577">2577</option><option value="2578">2578</option><option value="2579">2579</option><option value="2580">2580</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="เวลา(สิ้นสุด)">เวลา(สิ้นสุด):</label>
-          <input id="เวลา(สิ้นสุด)" class="form-control" type="time" step="900">
-        </div>
+
         <div class="form-group">
           <label for="เหตุผลชี้แจง">เหตุผลชี้แจง:</label>
           <input id="เหตุผลชี้แจง" class="form-control" placeholder="กรอกเหตุผลชี้แจง" type="text">
@@ -259,14 +280,14 @@
 
     function combineDate(day, month, year) {
         if (!day || !month || !year) return '';
-        return `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}-${year}`;
+        // Assuming year is in Buddhist Era (พ.ศ.), no conversion is needed if you want to display it as is.
+        return `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
     }
-
-    // --- ฟังก์ชันที่แก้ไขใหม่ทั้งหมด ---
+    
     function previewData() {
         const missingFields = [];
 
-        // 1. ตรวจสอบค่าจากฟอร์มโดยตรง
+        // 1. Check values directly from the form
         if (document.getElementById("หลักสูตร").value === "-") missingFields.push("หลักสูตร");
         if (document.getElementById("ยศ").value === "-") missingFields.push("คำนำหน้าชื่อ");
         if (document.getElementById("ชื่อ").value.trim() === "") missingFields.push("ชื่อ");
@@ -274,7 +295,7 @@
         if (document.getElementById("รหัสประจำตัว").value.trim() === "") missingFields.push("เลขที่");
         if (document.getElementById("การขออนุญาต").value === "-") missingFields.push("ประเภทการลา");
         
-        // ตรวจสอบวันที่และเวลาอย่างละเอียด
+        // Detailed check for dates and times
         if (!document.getElementById("ตั้งแต่วันที่-day").value || !document.getElementById("ตั้งแต่วันที่-month").value || !document.getElementById("ตั้งแต่วันที่-year").value) {
             missingFields.push("'ตั้งแต่วันที่'");
         }
@@ -285,7 +306,7 @@
         if (document.getElementById("เวลา(สิ้นสุด)").value === "") missingFields.push("'เวลา(สิ้นสุด)'");
         if (document.getElementById("เหตุผลชี้แจง").value.trim() === "") missingFields.push("เหตุผลชี้แจง");
 
-        // 2. ถ้ามีข้อมูลไม่ครบ ให้แสดง Modal และหยุดการทำงานทันที
+        // 2. If any field is missing, show the modal and stop execution
         if (missingFields.length > 0) {
             const listElement = document.getElementById("missing-fields-list");
             listElement.innerHTML = '';
@@ -295,10 +316,10 @@
                 listElement.appendChild(li);
             });
             $('#validationModal').modal('show');
-            return; // << สำคัญมาก: หยุดฟังก์ชันไว้ตรงนี้
+            return; // << Very important: stop the function here
         }
 
-        // 3. ถ้าข้อมูลครบถ้วนทั้งหมด จึงจะสร้าง object และแสดงหน้ายืนยัน
+        // 3. If all data is present, create the object and show the confirmation page
         const now = new Date();
         formData = {
             Timestamp: now.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
@@ -334,27 +355,27 @@
     }
 
     async function submitData() {
-      document.getElementById("confirmation-container").classList.add("hidden");
-      document.getElementById("status").innerText = "กำลังส่งข้อมูล...";
+        document.getElementById("confirmation-container").classList.add("hidden");
+        document.getElementById("status").innerText = "กำลังส่งข้อมูล...";
 
-      try {
-        const response = await fetch(`${scriptURL}?text=${encodeURIComponent(JSON.stringify(formData))}`);
-        const result = await response.json();
+        try {
+            const response = await fetch(`${scriptURL}?text=${encodeURIComponent(JSON.stringify(formData))}`);
+            const result = await response.json();
 
-        if (result.status === 'success') {
-          const now = new Date();
-          const thaiDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
-          const thaiTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-          const formattedTimestamp = `วันที่ ${thaiDate} เวลา ${thaiTime} น.`;
+            if (result.status === 'success') {
+                const now = new Date();
+                const thaiDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear() + 543}`;
+                const thaiTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+                const formattedTimestamp = `วันที่ ${thaiDate} เวลา ${thaiTime} น.`;
 
-          document.getElementById("successMessage").innerText = `ใบ ${formData['การขออนุญาต']} ของ ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']} เลขที่ ${formData['รหัสประจำตัว']} ถูกส่งเรียบร้อย ณ ${formattedTimestamp}`;
-          document.getElementById("success-section").classList.remove("hidden");
-          document.getElementById("status").innerText = "";
-          
-          localStorage.setItem('lastSubmissionTime', Date.now());
+                document.getElementById("successMessage").innerText = `ใบ ${formData['การขออนุญาต']} ของ ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']} เลขที่ ${formData['รหัสประจำตัว']} ถูกส่งเรียบร้อย ณ ${formattedTimestamp}`;
+                document.getElementById("success-section").classList.remove("hidden");
+                document.getElementById("status").innerText = "";
+                
+                localStorage.setItem('lastSubmissionTime', Date.now());
 
-          if (liff.isInClient() && liff.sendMessages) {
-            const replyText = `***ใบ ${formData['การขออนุญาต']}***
+                if (liff.isInClient() && liff.sendMessages) {
+                    const replyText = `***ใบ ${formData['การขออนุญาต']}***
 🔻 ${formData['ยศ']} ${formData['ชื่อ']} ${formData['สกุล']}
 ถูกส่งเรียบร้อย ณ 
 ${formattedTimestamp}
@@ -368,18 +389,18 @@ ${formattedTimestamp}
             เวลา : ${formData['เวลา(สิ้นสุด)']}
       🔸เนื่องจาก : ${formData['เหตุผลชี้แจง']}
           `;
-            await liff.sendMessages([{ type: 'text', text: replyText }]);
-          }
+                    await liff.sendMessages([{ type: 'text', text: replyText }]);
+                }
 
-        } else {
-          document.getElementById("status").innerText = "เกิดข้อผิดพลาดในการส่งข้อมูล";
-          document.getElementById("error-message").classList.remove("hidden");
+            } else {
+                document.getElementById("status").innerText = "เกิดข้อผิดพลาดในการส่งข้อมูล";
+                document.getElementById("error-message").classList.remove("hidden");
+            }
+        } catch (error) {
+            console.error("การส่งข้อมูลล้มเหลว:", error);
+            document.getElementById("status").innerText = "การส่งข้อมูลล้มเหลว โปรดลองใหม่อีกครั้ง";
+            document.getElementById("error-message").classList.remove("hidden");
         }
-      } catch (error) {
-        console.error("การส่งข้อมูลล้มเหลว:", error);
-        document.getElementById("status").innerText = "การส่งข้อมูลล้มเหลว โปรดลองใหม่อีกครั้ง";
-        document.getElementById("error-message").classList.remove("hidden");
-      }
     }
   </script>
 </body>
